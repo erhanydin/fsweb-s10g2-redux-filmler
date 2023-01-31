@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { addMovie } from './../actions/movieActions';
+import { useDispatch } from 'react-redux';
 
 import { Link, useHistory } from 'react-router-dom';
 
+import { toast } from 'react-toastify';
+
 const AddMovieForm = (props) => {
   const { push } = useHistory();
+  const dispatch = useDispatch();
 
   const [movie, setMovie] = useState({
     title: "",
@@ -22,6 +26,23 @@ const AddMovieForm = (props) => {
   }
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+    toast('🦄 Wow so easy!', {
+      position: "top-left",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+
+    const newMovie = {
+      ...movie,
+      id: Date.now()
+    }
+    dispatch(addMovie(newMovie));
   }
 
   const { title, director, genre, metascore, description } = movie;

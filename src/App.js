@@ -1,5 +1,8 @@
 import React from "react";
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import MovieList from './components/MovieList';
@@ -26,10 +29,12 @@ const App = props => {
 
           <Switch>
             <Route exact path="/movies/add">
+              <ToastContainer />
               <AddMovieForm />
             </Route>
 
             <Route path="/movies/:id">
+              <ToastContainer />
               <Movie />
             </Route>
 

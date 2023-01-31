@@ -5,7 +5,7 @@ const MovieListItem = (props) => {
   const { id, title, director, genre, metascore } = props.movie;
 
   return (
-    <tr>
+    <tr key={id}>
       <td className='pl-4'>{title}</td>
       <td>{director}</td>
       <td>{genre}</td>
